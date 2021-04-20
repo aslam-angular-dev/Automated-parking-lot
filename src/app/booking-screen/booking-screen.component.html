@@ -1,0 +1,106 @@
+<ng-container>
+  <ng-container class="booking-area">
+    <div class="header">
+      <span class="title">Crion Booking System</span>
+      <div class="clock-container clock2">
+        <div class="time">{{date}}</div>
+      </div>
+    </div>
+    <div class="legend-box">
+      <div class="legends">
+        <div class="white square"></div>
+        <span>Available</span>
+      </div>
+      <div class="legends">
+        <div class="yellow square"></div>
+        <span>Selected</span>
+      </div>
+      <div class="legends">
+        <div class="red square"></div>
+        <span>Booked</span>
+      </div>
+    </div>
+    <div>
+      <div>
+        <div class="line" *ngFor="let slot of slotData">
+          <div class="box" *ngFor="let carSlots of slot">
+            <table>
+              <td class="car" [ngClass]="getSlotState(cars)" *ngFor="let cars of carSlots"
+                (click)="clickEventHandler(cars)">{{cars.id}}</td>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="openBookingModal">
+    <div id="openModalWindow" class="popupWindow" #showPopup>
+      <div class="popupContent_BackgrdColor">
+        <div class="popupContent">
+          <div class="popup_header" id="panelHeading_Padding">
+            <img tabindex="0" src="/assets/close-btn.svg" class="ui primary button close" (click)="closePopup()">
+            <div class="popup_area">
+              <div class="text-area">
+                <span class="text">
+                  Do you want to confirm booking for your vehicle {{selectedSlot.vechicleNumber}} in the slot {{selectedSlot.id}}?
+                </span>
+              </div>
+              <div class="button-area">
+                <button type="submit" name="confirm" class="confirm" (click)="book()">
+                  <span>CONFIRM</span>
+                </button>
+                <button type="submit" name="cancel" class="cancel" (click)="closePopup()">
+                  <span>CANCEL</span>
+                </button>
+              </div>
+            </div>
+
+
+          </div>
+          <!-- <div class="jsonContent">
+              <div class="line label">{{data.thanksText}}</div>
+            </div> -->
+        </div>
+      </div>
+    </div>
+
+  </ng-container>
+  <ng-container *ngIf="openBookingModal">
+    <div id="openModalWindowPay" class="popupWindow" #showClosePopup>
+      <div class="popupContent_BackgrdColor">
+        <div class="popupContent">
+          <div class="popup_header" id="panelHeading_Padding">
+            <img tabindex="0" src="/assets/close-btn.svg" class="ui primary button close" (click)="closePayPopup()">
+            <div class="popup_area pay">
+              <div class="text-area">
+                <span class="text">
+                  Do you want to cancel booking for your vehicle {{selectedSlot.vechicleNumber}}?
+                </span>
+                <span class="time-duration">
+                  Booking hours:{{bookinghours}}
+                </span>
+              </div>
+              <div class="button-area">
+                <button *ngIf="hours<=1" type="submit" name="confirm" class="confirm" (click)="canelBooking()">
+                  <span>CONFIRM</span>
+                </button>
+                <button *ngIf="hours>1" type="submit" name="confirm" class="confirm" (click)="canelBooking()">
+                  <span>PAY Rs.{{hours*10}}</span>
+                </button>
+                <button type="submit" name="cancel" class="cancel" (click)="closePayPopup()">
+                  <span>CANCEL</span>
+                </button>
+              </div>
+            </div>
+
+
+          </div>
+          <!-- <div class="jsonContent">
+              <div class="line label">{{data.thanksText}}</div>
+            </div> -->
+        </div>
+      </div>
+    </div>
+
+  </ng-container>
+</ng-container>

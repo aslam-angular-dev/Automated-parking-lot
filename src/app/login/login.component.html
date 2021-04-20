@@ -1,0 +1,43 @@
+<router-outlet></router-outlet>
+<ng-container>
+    <section>
+
+        <div class="headingArea">
+            <h2>Welcome to Crion Automated Parking!</h2>
+            <p>Please enter your details to continue!</p>
+        </div>
+
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="log-form">
+
+            <div class="group log-input">
+                <input formControlName="userName" type="text" id="username" name="username" placeholder="Username">
+            </div>
+            <div class="group log-input">
+                <input formControlName="mobileNumber" type="text" id="username" name="username"
+                    placeholder="Mobile Number">
+            </div>
+            <div class="group log-input">
+                <input formControlName="vechicleNumber" type="text" id="password" name="password"
+                    placeholder="Vehicle Number">
+            </div>
+            <div class="group log-input">
+                <input formControlName="vechicleType" type="text" id="password" name="password"
+                    placeholder="Two/Four Wheeler">
+            </div>
+            <!-- <div class="group log-input">
+                <ng-select [items]="vechicles" bindLabel="name" bindValue="name" placeholder="Select Vechicle Type"
+                    formControlName="vechicleType" [(ngModel)]="selectedType"></ng-select>
+            </div> -->
+            <div class="container-log-btn">
+                <button type="submit" name="btn_submit" class="log-form-btn"
+                    [ngClass]="!loginForm.valid?'disabled':'enabled'" [disabled]="!loginForm.valid">
+                    <span>Login</span>
+                </button>
+            </div>
+
+        </form>
+
+
+
+    </section>
+</ng-container>

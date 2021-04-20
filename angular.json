@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1, 
+  "version": 1,
   "newProjectRoot": "projects",
   "projects": {
     "Automated-parking-lot": {
@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "Automated-parking-lot"
+    }
+  },
+  "defaultProject": "Automated-parking-lot",
+  "cli": {
+    "analytics": "ea64271e-5d00-4ac7-9fb8-5466a7b28ab4"
+  }
 }
